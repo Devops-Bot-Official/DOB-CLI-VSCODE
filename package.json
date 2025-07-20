@@ -1,0 +1,53 @@
+{
+  "name": "dob-cli",
+  "displayName": "DOB CLI",
+  "description": "Secure remote command execution using persona-authenticated DOB CLI.",
+  "version": "1.0.0",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": [
+    "onView:dobSidebar",
+    "onCommand:dob.showPanel"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "dob.showPanel",
+        "title": "Show DOB Panel"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "dobSidebar",
+          "title": "DOB CLI",
+          "icon": "media/dob-icon.png"
+        }
+      ]
+    },
+    "views": {
+      "dobSidebar": [
+        {
+          "id": "dobView",
+          "name": "Persona Panel"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "tsc -p ./",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/vscode": "^1.90.0",
+    "typescript": "^5.4.0",
+    "@vscode/test-electron": "^2.3.5"
+  }
+}
